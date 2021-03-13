@@ -39,6 +39,14 @@ sklearn's built-in kpca for even better results. I did it in order to understand
 ```project_kpca()``` does:
 - Projecting the test into the principal component space made by the train-set. Otherwise if you kpca on both is cheating (cherry-picking).
 
+For this particular problem I shaped kpca's output to 300, meaning that ```components=300```. This way we hold more than 90% of 
+the initial information. Gamma was set 1, meaning that ```gamma=1``` as a parameter in our ```kpca(X, components=300, gamma=1)```. So even 
+though we lost more than half the features that we initially got (from 784 to 300), it turns out that is easier for our classifier to handle 
+the data this way achieving even greater results.
+
+## LDA (sklearn's)
+
+As for this part, I used the prebuilt ```lda()``` from sklearn. Empirically is better to pass inside the LDA the output of KPCA
 
 
 
