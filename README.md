@@ -46,7 +46,23 @@ the data this way achieving even greater results.
 
 ## LDA (sklearn's)
 
-As for this part, I used the prebuilt ```lda()``` from sklearn. Empirically is better to pass inside the LDA the output of KPCA
+As for this part, I used the prebuilt ```lda()``` from sklearn. Empirically is better to pass inside the LDA the output of KPCA. So from 784 
+initial features we have 300, and after LDA we 'll have just 9. Keep in mind that LDA needs supervision, in contrast with KPCA. The final 
+dimension of the data is 15000 x 9.
+
+## Classification/ Results
+
+Custom KPCA+LDA took 3 minutes: 
+- Nearest Neighbor achieved 0.84 accuracy on test, which is +0.03 better than without any dimensionality reduction at all.
+- K-NN achieved 0.87 accuracy on test, which is +0.01 better than without any dimensionality reduction at all.
+
+Sklearns KPCA+LDA took 2.40 minutes:
+- K-NN (n=5) under prebuild libraries achieved 0.91 accuracy for the 15k trainset which is +0.04 better than my KPCA, and +0.05 better than 
+without any KPCA or LDA at all.
+- SVM achieved 0.97 with the prebuilt libraries, which is +0.6 better from the run without any kpca+lda.  (full dataset NOT just 15k for training)
+- Nearest Centroid under prebuilt libraries achieved 0.88 for the 15k trainset which is +0.04 better than my KPCA, and +0.07 better than without any KPCA or LDA at all.
+
+
 
 
 
